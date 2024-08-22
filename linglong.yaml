@@ -1,0 +1,29 @@
+version: "1"
+
+package:
+  id: io.github.skyrimqt
+  name: skyrimqt
+  version: 0.0.0.1
+  kind: app
+  description: |
+    a self-made, 2D videogame inspired by Bethesda Softworks The Elder Scrolls Skyrim
+
+command:
+  - /opt/apps/io.github.skyrimqt/files/bin/skyrim-qt
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/sorge13248/skyrimqt.git
+    version: master
+    commit: e2a509e76d65527dc7e899746140469e8b0a3eaf
+
+build: |
+  cd /project/linglong/sources/skyrimqt.git
+  git apply ../../../0001-install.patch
+  cp images/icon.png images/skyrim-qt.png
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install

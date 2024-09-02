@@ -1,0 +1,49 @@
+From c233053a506402bc029a5665f2e72bd684236f41 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Mon, 19 Aug 2024 15:10:25 +0800
+Subject: [PATCH] install
+
+---
+ skyrim-qt.desktop | 11 +++++++++++
+ skyrim-qt.pro     |  8 ++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 skyrim-qt.desktop
+
+diff --git a/skyrim-qt.desktop b/skyrim-qt.desktop
+new file mode 100644
+index 0000000..fb33bb8
+--- /dev/null
++++ b/skyrim-qt.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Game;Qt;
++Exec=skyrim-qt
++Name=skyrim-qt
++Name[zh_CN]=skyrim-qt
++Icon=skyrim-qt
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=skyrim-qt
++Version=1.0
+\ No newline at end of file
+diff --git a/skyrim-qt.pro b/skyrim-qt.pro
+index 7d4775a..4d79ec9 100755
+--- a/skyrim-qt.pro
++++ b/skyrim-qt.pro
+@@ -74,3 +74,11 @@ RESOURCES += \
+     image.qrc
+ 
+ QMAKE_CXXFLAGS += -std=c++11
++
++target.path = $$PREFIX/bin
++desktop.files = skyrim-qt.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons
++icons.files = images/skyrim-qt.png
++
++INSTALLS += target desktop icons
+\ No newline at end of file
+-- 
+2.43.4
+
